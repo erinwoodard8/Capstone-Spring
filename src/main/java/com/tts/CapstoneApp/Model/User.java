@@ -14,18 +14,18 @@ import java.util.Arrays;
 
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Id
-        Double id;
+        Integer id;
 
         String username;
         String email;
         String password;
-        Double favoriteMovies[];
+        Long favoriteMovies[];
 
         //CONSTRUCTORS
         public User () {
         }
 
-        public User (Double id, String username, String email, String password, Double favoriteMovies[]) {
+        public User (Integer id, String username, String email, String password, Long favoriteMovies[]) {
             this.id = id;
             this.username = username;
             this.email = email;
@@ -34,7 +34,7 @@ import java.util.Arrays;
         }
     //GETTERS
 
-    public Double getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ import java.util.Arrays;
         return password;
     }
 
-    public Double[] getFavoriteMovies() {
+    public Long[] getFavoriteMovies() {
         return favoriteMovies;
     }
 
@@ -67,7 +67,7 @@ import java.util.Arrays;
         this.password = password;
     }
 
-    public void setFavoriteMovies(Double[] favoriteMovies) {
+    public void setFavoriteMovies(Long[] favoriteMovies) {
         this.favoriteMovies = favoriteMovies;
     }
 
