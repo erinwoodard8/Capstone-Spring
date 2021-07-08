@@ -1,22 +1,20 @@
 package com.tts.CapstoneApp.Model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Arrays;
 
 
 @Entity
+@Table(name="users")
     public class User {
         //FIELDS
 
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Id
         Integer id;
-
         String username;
+        @Column(unique = true)
         String email;
         String password;
         Long favoriteMovies[];

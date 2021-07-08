@@ -2,25 +2,31 @@ package com.tts.CapstoneApp.Controller;
 
 
 import com.tts.CapstoneApp.Model.User;
-import com.tts.CapstoneApp.Repository.UserRepository;
+import com.tts.CapstoneApp.Service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserServiceImpl userService;
+
+    @GetMapping("/get")
+    public User getUser(String email) {
+        return userService.findByEmail(email);
+    }
 
 
     @PostMapping("/post")
-    public void addNewUser() {
-        User newUser = new User("testUser", "test@gmail.com", "password");
-        userRepository.save(newUser);
-        System.out.println(newUser);
+    public User addNewUser(@RequestBody User user) {
+//        userService.saveUser(user);
+
+        System.out.println(user);
+
+        return userService.saveUser(user);
+
     }
 
 
