@@ -6,13 +6,14 @@ import java.util.Arrays;
 
 
 @Entity
-@Table(name="users")
+@Table(name="Users")
     public class User {
         //FIELDS
 
         @GeneratedValue(strategy = GenerationType.AUTO)
         @Id
         Integer id;
+        @Column(unique = true)
         String username;
         @Column(unique = true)
         String email;
