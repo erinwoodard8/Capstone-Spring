@@ -10,28 +10,23 @@ import java.util.Arrays;
     public class User {
         //FIELDS
 
-        @GeneratedValue(strategy = GenerationType.AUTO)
         @Id
-        Integer id;
-        @Column(unique = true)
+        String id;
         String username;
-        @Column(unique = true)
         String email;
-        String password;
         Long favoriteMovies[];
 
         //CONSTRUCTORS
         public User () {
         }
 
-        public User (String username, String email, String password) {
+        public User (String username, String email) {
             this.username = username;
             this.email = email;
-            this.password = password;
         }
     //GETTERS
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
@@ -43,25 +38,22 @@ import java.util.Arrays;
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public Long[] getFavoriteMovies() {
         return favoriteMovies;
     }
 
     //SETTERS
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public void setFavoriteMovies(Long[] favoriteMovies) {
@@ -74,7 +66,6 @@ import java.util.Arrays;
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", favoriteMovies=" + Arrays.toString(favoriteMovies) +
                 '}';
     }
