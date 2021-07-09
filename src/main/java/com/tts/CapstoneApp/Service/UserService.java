@@ -4,7 +4,7 @@ import com.tts.CapstoneApp.Model.User;
 
 public interface UserService {
 
-    public User addUser(User user);
+    public void processOAuthPostLogin(String id);
 
     public void deleteUser(Integer id);
 
