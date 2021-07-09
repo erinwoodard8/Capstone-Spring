@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@CrossOrigin
+
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -24,8 +25,8 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public User getUser(String email) {
-        return userService.findByEmail(email);
+    public User getUser(String id) {
+        return userService.findById(id);
     }
 
 
@@ -36,15 +37,19 @@ public class UserController {
 //        return userService.saveUser(user);
 //    }
 
-//    @PostMapping("/post/google")
-//    public User addNewUserGoogle(@AuthenticationPrincipal OAuth2User principal, @RequestBody User user) {
-//        String email = principal.getAttribute("email");
-//        String username = principal.getAttribute("given_name");
-//
-//
-//
-//        return userService.saveUser();
-//    }
+    @PostMapping("/post/google")
+    public User addNewUserGoogle(@AuthenticationPrincipal OAuth2User principal, @RequestBody User user) {
+        String username = principal.getAttribute("given_name");
+        String id = principal.getAttribute("sub");
+
+        User foundUser = userService.findById(id);
+
+        foundUser.setUsername(username);
+
+
+
+        return userService.saveUser(foundUser);
+    }
 
 
 

@@ -56,6 +56,11 @@ public class UserServiceImpl extends DefaultOAuth2UserService implements UserSer
     }
 
     @Override
+    public User findById(String id) {
+        return userRepository.findUserById(id);
+    }
+
+    @Override
     public User saveUser(User user) {
         return userRepository.save(user);
     }
