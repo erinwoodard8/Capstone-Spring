@@ -41,14 +41,23 @@ public class UserController {
     public User addNewUserGoogle(@AuthenticationPrincipal OAuth2User principal, @RequestBody User user) {
         String username = principal.getAttribute("given_name");
         String id = principal.getAttribute("sub");
+        String email = principal.getAttribute("email");
 
         User foundUser = userService.findById(id);
 
         foundUser.setUsername(username);
+        foundUser.setEmail(email);
 
 
 
         return userService.saveUser(foundUser);
+    }
+
+    @GetMapping("/login")
+    public User getLoggedInUser(@AuthenticationPrincipal OAuth2User principal) {
+        String id = principal.getAttribute("sub");
+
+        return userService.findById(id);
     }
 
 

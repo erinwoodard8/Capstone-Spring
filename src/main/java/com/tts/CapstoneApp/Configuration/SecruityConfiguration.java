@@ -63,7 +63,8 @@ public class SecruityConfiguration extends WebSecurityConfigurerAdapter {
 
                         oAuth2UserService.processOAuthPostLogin(oAuth2User.getAttribute("sub"));
 
-//                        response.sendRedirect("http://localhost3000");
+
+                        response.sendRedirect("http://localhost:3000/test");
                     }
 
         });
