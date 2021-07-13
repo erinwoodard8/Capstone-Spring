@@ -42,7 +42,7 @@ public class SecruityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/console/**").permitAll()
-                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers("/users/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -67,7 +67,10 @@ public class SecruityConfiguration extends WebSecurityConfigurerAdapter {
                         response.sendRedirect("http://localhost:3000/");
                     }
 
-        });
+                })
+                .and()
+                .logout()
+                .logoutSuccessUrl("http://localhost:3000/");
 
 
     }
