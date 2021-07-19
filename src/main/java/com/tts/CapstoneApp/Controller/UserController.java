@@ -49,6 +49,7 @@ public class UserController {
         foundUser.setEmail(email);
 
 
+        System.out.println("PostUser: " + user);
 
         return userService.saveUser(foundUser);
     }
@@ -58,6 +59,18 @@ public class UserController {
         String id = principal.getAttribute("sub");
 
         return userService.findById(id);
+    }
+
+    @PostMapping("/favorites")
+    public User updateMovies(@AuthenticationPrincipal OAuth2User principal, @RequestBody User user) {
+        String id = principal.getAttribute("sub");
+        User foundUser = userService.findById(id);
+
+        foundUser.setFavoriteMovies(user.getFavoriteMovies());
+
+        return userService.saveUser(foundUser);
+
+
     }
 
 
