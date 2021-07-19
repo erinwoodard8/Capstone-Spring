@@ -14,7 +14,7 @@ import java.util.Arrays;
         String id;
         String username;
         String email;
-        Long favoriteMovies[];
+        String favoriteMovies[];
 
         //CONSTRUCTORS
         public User () {
@@ -38,7 +38,7 @@ import java.util.Arrays;
         return email;
     }
 
-    public Long[] getFavoriteMovies() {
+    public String[] getFavoriteMovies() {
         return favoriteMovies;
     }
 
@@ -56,7 +56,7 @@ import java.util.Arrays;
         this.email = email;
     }
 
-    public void setFavoriteMovies(Long[] favoriteMovies) {
+    public void setFavoriteMovies(String[] favoriteMovies) {
         this.favoriteMovies = favoriteMovies;
     }
 

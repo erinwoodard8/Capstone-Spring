@@ -32,7 +32,7 @@ public class UserServiceImpl extends DefaultOAuth2UserService implements UserSer
         if(existUser == null) {
             User newUser = new User();
             newUser.setId(id);
-            System.out.println("\n" + newUser);
+            System.out.println("\n" + "LoginUser: " + newUser);
 
             userRepository.save(newUser);
         }
